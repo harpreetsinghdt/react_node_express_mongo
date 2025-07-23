@@ -4,6 +4,8 @@ const router = express.Router();
 const { ObjectId } = require("mongodb");
 const { connect } = require("../db");
 
+const User = require("../models/User.js");
+
 router.get("/", async (req, res) => {
   try {
     const db = await connect();
@@ -95,6 +97,19 @@ router.post("/", async (req, res) => {
     res.status(201).json({ insertedId: result.insertedId, insertedData: user });
   } catch (err) {
     res.status(500).json({ message: "Failed to create user", error: err });
+  }
+});
+router.post("/insert_mongoose", async (req, res) => {
+  try {
+    const user = req.body;
+
+    const newUser = new User(user);
+    await newUser.save();
+    res.status(201).json({ insertedData: user });
+  } catch (err) {
+    res
+      .status(500)
+      .json({ message: "Failed to create user", error: err.message });
   }
 });
 

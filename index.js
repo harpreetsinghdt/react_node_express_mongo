@@ -1,10 +1,12 @@
 // index.js
 const express = require("express");
+const connectDB = require("./db_mongoose");
 
 const app = express();
 const PORT = 3000;
 
 app.use(express.json());
+connectDB();
 
 // Import routes
 const seedsRouter = require("./routes/seed");
