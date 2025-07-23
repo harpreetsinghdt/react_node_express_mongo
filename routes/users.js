@@ -44,6 +44,48 @@ router.get("/find", async (req, res) => {
     res.status(500).json({ error: "Failed to get users" });
   }
 });
+router.put("/update", async (req, res) => {
+  try {
+    const db = await connect();
+    console.log(req.body);
+    const { condition_key, condition_val, field, value } = req.body;
+    const query = { [condition_key]: condition_val };
+    const update = { $set: { [field]: value } };
+    const result = await db.collection("users").updateOne(query, update);
+
+    res.status(200).json({
+      status: "success",
+      message: "Data upadted successfully.",
+      body: req.body,
+      data: result,
+    });
+  } catch (err) {
+    res
+      .status(500)
+      .json({ message: "Failed to update user", error: err.message });
+  }
+});
+router.delete("/", async (req, res) => {
+  try {
+    const db = await connect();
+    console.log(req.body);
+    const { condition_key, condition_val } = req.body;
+    const query = { [condition_key]: condition_val };
+    console.log(query);
+    const result = await db.collection("users").deleteOne(query);
+
+    res.status(200).json({
+      status: "success",
+      message: "Data deleted successfully.",
+      body: req.body,
+      data: result,
+    });
+  } catch (err) {
+    res
+      .status(500)
+      .json({ message: "Failed to delete user", error: err.message });
+  }
+});
 
 router.post("/", async (req, res) => {
   try {
