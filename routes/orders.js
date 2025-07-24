@@ -106,4 +106,33 @@ router.get("/getAggregate", async (req, res) => {
   }
 });
 
+router.get("/getAggregateSort", async (req, res) => {
+  try {
+    const db = await connect();
+
+    const result = await db
+      .collection("orders")
+      .aggregate([
+        { $match: { status: "completed" } },
+        {
+          $group: {
+            _id: "$userId",
+            totalSales: { $sum: "$amount" },
+            totalOrders: { $sum: 1 },
+          },
+        },
+        { $sort: { totalSales: -1 } },
+      ])
+      .toArray();
+
+    res.status(200).json({
+      status: "success",
+      message: "Data fetched successfully.",
+      data: result,
+    });
+  } catch (err) {
+    res.status(500).json({ message: "Failed to get", error: err.message });
+  }
+});
+
 module.exports = router;

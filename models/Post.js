@@ -1,11 +1,19 @@
 const mongoose = require("mongoose");
 
-const postSchema = new mongoose.Schema({
-  title: String,
-  user: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
-});
+const postSchema = new mongoose.Schema(
+  {
+    title: String,
+    content: String,
+    status: {
+      type: String,
+      enum: ["published", "draft", "archived"],
+      default: "draft",
+    },
+    user: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
+  },
+  { timestamps: true }
+);
 
-const Post = mongoose.model("Post_", postSchema);
-module.export = Post;
+const Post = mongoose.model("Post", postSchema);
 
-// Post.find().populate("user");
+module.exports = Post;
