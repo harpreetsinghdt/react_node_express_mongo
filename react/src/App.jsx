@@ -123,6 +123,7 @@ function App() {
         <p>
           Edit <code>src/App.jsx</code> and save to test HMR
         </p>
+        <p>Below tabs are built using tailwind css for vite</p>
       </div>
 
       <div className="max-w-md mx-auto p-4">
