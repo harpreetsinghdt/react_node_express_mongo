@@ -18,6 +18,7 @@ import { useEffect, useState } from "react";
 function App() {
   const [activeTab, setActiveTab] = useState(1);
   const [tabData, setTabData] = useState(null);
+  const [apiCalled, setApiCalled] = useState("Default Data No API call.");
 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -85,6 +86,7 @@ function App() {
     setActiveTab(tabId);
     setLoading(true);
     setError(null);
+    setApiCalled(tabApis[tabId]);
     try {
       // Replace with your actual API call
       if (tabId != 1) {
@@ -155,6 +157,9 @@ function App() {
             <div className="text-red-500 p-4 bg-red-50 rounded">{error}</div>
           ) : tabData && activeTab != 1 ? (
             <div>
+              <h3 className="text-lg font-semibold mb-2">
+                API called: {apiCalled}
+              </h3>
               <h3 className="text-lg font-semibold mb-2">API Data:</h3>
               <pre className="bg-gray-100 p-4 rounded overflow-x-auto">
                 {JSON.stringify(tabData, null, 2)}
