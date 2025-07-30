@@ -1,11 +1,13 @@
 // index.js
 const express = require("express");
 const connectDB = require("./db_mongoose");
+const cors = require("cors");
 
 const app = express();
 const PORT = 3000;
 
 app.use(express.json());
+app.use(cors());
 connectDB();
 
 // Import routes

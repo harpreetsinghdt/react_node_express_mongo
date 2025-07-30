@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 const UserContext = React.createContext();
+import "../App.css";
 
 const Jwt = () => {
   const [user, setUser] = useState({ name: "Harpreet" });
@@ -27,7 +28,7 @@ Token is stored in a httpOnly cookie for security.
   return (
     <>
       <div style={{ textAlign: "left", paddingLeft: "40px" }}>
-        <h2>JWT Authentication Workflow</h2>
+        <h2 className="text-lg">JWT Authentication Workflow</h2>
         <p>User submits email & password via login form. </p>
         <p>Backend verifies credentials and returns a signed JWT. </p>
         <p>

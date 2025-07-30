@@ -10,7 +10,7 @@ const Props = (props) => {
   return (
     <>
       <div style={{ textAlign: "left", paddingLeft: "40px" }}>
-        <h2>props</h2>
+        <h2 className="text-lg">props</h2>
         <p>Props are read-only attributes passed from parent to child</p>
         <p>
           components. They create a unidirectional data flow (Parent → Child).
