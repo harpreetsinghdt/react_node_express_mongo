@@ -9,7 +9,7 @@ const Props = (props) => {
 `;
   return (
     <>
-      <div>
+      <div style={{ textAlign: "left", paddingLeft: "40px" }}>
         <h2>props</h2>
         <p>Props are read-only attributes passed from parent to child</p>
         <p>
@@ -19,11 +19,14 @@ const Props = (props) => {
       <h2>props example:</h2>
       <h3>Hello, {props.name}</h3>
       <pre
+        className="codepre"
         style={{
           background: "#f5f5f5",
-          padding: "16px",
+          paddingTop: "20px",
+          paddingLeft: "40px",
           borderRadius: "8px",
           overflowX: "auto",
+          textAlign: "left",
         }}
       >
         <code>{code}</code>

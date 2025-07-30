@@ -15,7 +15,7 @@ const UseStateHook = () => {
 
   return (
     <>
-      <div>
+      <div style={{ textAlign: "left", paddingLeft: "40px" }}>
         <h2>useState hook</h2>
         <p>State is local data maintained within a component.</p>
         <p>It determines how a component behaves and renders.</p>
@@ -28,11 +28,14 @@ const UseStateHook = () => {
         </button>
       </div>
       <pre
+        className="codepre"
         style={{
           background: "#f5f5f5",
-          padding: "16px",
+          paddingTop: "20px",
+          paddingLeft: "40px",
           borderRadius: "8px",
           overflowX: "auto",
+          textAlign: "left",
         }}
       >
         <code>{code}</code>

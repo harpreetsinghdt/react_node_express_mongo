@@ -6,6 +6,13 @@ import Props from "./components/Props";
 import UseStateHook from "./components/UseStateHook";
 import LiftingStateUp from "./components/LiftingStateUp";
 import UseEffectHook from "./components/UseEffectHook";
+import ContextAPI from "./components/ContextAPI";
+import Redux from "./components/Redux";
+import ReduxToolkitQuery from "./components/ReduxToolkitQuery";
+import Jwt from "./components/JWT";
+import MiddlewareGuards from "./components/MiddlewareGuards";
+import ReactRouteGuards from "./components/ReactRouteGuards";
+import RoleGuard from "./components/RoleGuard";
 
 function App() {
   return (
@@ -38,6 +45,27 @@ function App() {
       </div>
       <div className="wrapper">
         <UseEffectHook />
+      </div>
+      <div className="wrapper">
+        <ContextAPI />
+      </div>
+      <div className="wrapper">
+        <Redux />
+      </div>
+      <div className="wrapper">
+        <ReduxToolkitQuery />
+      </div>
+      <div className="wrapper">
+        <Jwt />
+      </div>
+      <div className="wrapper">
+        <MiddlewareGuards />
+      </div>
+      <div className="wrapper">
+        <ReactRouteGuards />
+      </div>
+      <div className="wrapper">
+        <RoleGuard />
       </div>
     </>
   );

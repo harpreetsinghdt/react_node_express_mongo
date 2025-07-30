@@ -28,7 +28,7 @@ function ChildDisplay({ value }) {
 
   return (
     <>
-      <div>
+      <div style={{ textAlign: "left", paddingLeft: "40px" }}>
         <h2>Lifting State Up</h2>
         <p>
           What? Moving the shared state to the closest common ancestor
@@ -42,11 +42,14 @@ function ChildDisplay({ value }) {
       <ChildInput value={value} setValue={setValue} />
       <ChildDisplay value={value} />
       <pre
+        className="codepre"
         style={{
           background: "#f5f5f5",
-          padding: "16px",
+          paddingTop: "20px",
+          paddingLeft: "40px",
           borderRadius: "8px",
           overflowX: "auto",
+          textAlign: "left",
         }}
       >
         <code>{code}</code>

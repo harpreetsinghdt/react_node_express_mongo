@@ -28,7 +28,7 @@ const UseEffectHook = () => {
 
   return (
     <>
-      <div>
+      <div style={{ textAlign: "left", paddingLeft: "40px" }}>
         <h2>useEffect Hook</h2>
         <p>
           useEffect() Hook is the alternative to Class Lifecycle methods in
@@ -48,11 +48,14 @@ const UseEffectHook = () => {
       <h2>useEffect example:</h2>
       <div>Count: {count}</div>
       <pre
+        className="codepre"
         style={{
           background: "#f5f5f5",
-          padding: "16px",
+          paddingTop: "20px",
+          paddingLeft: "40px",
           borderRadius: "8px",
           overflowX: "auto",
+          textAlign: "left",
         }}
       >
         <code>{code}</code>
