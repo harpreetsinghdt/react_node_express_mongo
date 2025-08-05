@@ -1,0 +1,138 @@
+{
+  "info": {
+    "name": "Redis Express Boilerplate API",
+    "_postman_id": "redis-express-boilerplate",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Session Route",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/session",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "session"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Cache Route",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/cache",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "cache"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Publish Notification",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"message\": \"Hello Subscribers!\"}"
+        },
+        "url": {
+          "raw": "http://localhost:3000/pubsub/publish",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "pubsub",
+            "publish"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Rate Limit Test",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/ratelimit",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "ratelimit"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Queue Send Email",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"email\": \"test@example.com\", \"content\": \"Hello Email Queue!\"}"
+        },
+        "url": {
+          "raw": "http://localhost:3000/queue/send-email",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "queue",
+            "send-email"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Counter Like",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/counter/like",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "counter",
+            "like"
+          ]
+        }
+      }
+    }
+  ]
+}
