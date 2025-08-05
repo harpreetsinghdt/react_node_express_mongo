@@ -89,13 +89,16 @@ router.get("/nth", (req, res) => {
 });
 
 router.get("/nthRecursive", (req, res) => {
+  const nthRecursive = (list, n) => {
+    if (n === 0) {
+      res.json(list.value);
+    } else {
+      res.json(nthRecursive(list.rest, n - 1));
+    }
+  };
   let list = req.body.list;
   let n = req.body.n;
-  if (n === 0) {
-    res.json(list.value);
-  } else {
-    res.json(nthRecursive(list.rest, n - 1));
-  }
+  res.json(nthRecursive(list, n));
 });
 
 router.get("/deepEqual", (req, res) => {
@@ -117,12 +120,40 @@ router.get("/loop", (req, res) => {
   res.json(result);
 });
 
+// The "every" function checks whether all elements in an array pass a given test.
+// It takes an array and a test function as input. It iterates through each element of the array,
+// and applies the test function to each element. If the test function returns false for any element,
+// "every" returns false immediately. If the test function returns true for all elements, "every" returns true.
+// In the route handler, the test function is expected to be provided in the request body.
+//// Example usage:
+//// array = [1, 2, 3, 4], test = (n) => n > 0
+//// every(array, test) returns true because all elements are greater than 0.
+// To parse a test function sent as a string in the backend, you can use the JavaScript Function constructor.
+// For example, if the client sends:
+//   { "array": [1, 2, 3, 4], "test": "n => n > 0" }
+// In your route handler, you can convert the string to a function like this:
+//   let testStr = req.body.test;
+//   let test;
+//   try {
+//     test = eval(`(${testStr})`);
+//   } catch (e) {
+//     return res.status(400).json({ error: "Invalid test function" });
+//   }
+// Now you can use `test` as a function in your logic.
+// Note: Using eval or the Function constructor can be dangerous if you do not trust the input. Only use this in a controlled environment or with proper validation/sanitization.
+
 router.get("/every", (req, res) => {
   let array = req.body.array;
   let test = req.body.test;
+  let testFunction;
+  try {
+    testFunction = eval(`(${test})`);
+  } catch (e) {
+    return res.status(400).json({ error: "Invalid test function" });
+  }
   let result = true;
   for (let i = 0; i < array.length; i++) {
-    if (!test(array[i])) {
+    if (!testFunction(array[i])) {
       result = false;
       break;
     }
