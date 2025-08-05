@@ -34,4 +34,23 @@ router.get("/sumOfAnArray", (req, res) => {
   res.json(result);
 });
 
+router.get("/reverseArray", (req, res) => {
+  let result = [];
+  let array = req.body.array;
+  for (let i = array.length - 1; i >= 0; i--) {
+    result.push(array[i]);
+  }
+  res.json(result);
+});
+
+router.get("/reverseArrayInPlace", (req, res) => {
+  let array = req.body.array;
+  for (let i = 0; i < array.length / 2; i++) {
+    let temp = array[i];
+    array[i] = array[array.length - 1 - i];
+    array[array.length - 1 - i] = temp;
+  }
+  res.json(array);
+});
+
 module.exports = router;
